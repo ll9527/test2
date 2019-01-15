@@ -1,12 +1,13 @@
 package com.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-@EntityScan
 public class Address {
     private Integer id;
 
     private String address;
+
+    private Integer userId;
+
+    private String userName;
 
     public Integer getId() {
         return id;
@@ -22,5 +23,21 @@ public class Address {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 }

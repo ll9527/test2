@@ -11,11 +11,25 @@ spring:
       max-active: 20
       min-idle: 10
       max-wait: 10
+  resources:
+    chain:
+      strategy:
+        content:
+          paths: /**
+          enabled: true
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+    prefix: classpath:/view/
+    encoding: UTF-8
+    suffix: .html
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   config-location: classpath:mybatis-config.xml
+
 logging:
   level:
     com:
       dao:
         debug
+
