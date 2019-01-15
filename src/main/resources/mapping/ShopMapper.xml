@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.Shop_classifyMapper" >
-  <resultMap id="BaseResultMap" type="com.entity.Shop_classify" >
+<mapper namespace="com.dao.ShopMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Shop" >
     <id column="class_id" property="classId" jdbcType="INTEGER" />
     <result column="class_name" property="className" jdbcType="VARCHAR" />
     <result column="class_key" property="classKey" jdbcType="INTEGER" />
@@ -22,7 +22,7 @@
     delete from shop_classify
     where class_id = #{classId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.entity.Shop_classify" >
+  <insert id="insert" parameterType="com.entity.Shop" >
     insert into shop_classify (class_id, class_name, class_key, 
       level, ondelect, images
       )
@@ -30,7 +30,7 @@
       #{level,jdbcType=INTEGER}, #{ondelect,jdbcType=INTEGER}, #{images,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.entity.Shop_classify" >
+  <insert id="insertSelective" parameterType="com.entity.Shop" >
     insert into shop_classify
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="classId != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Shop_classify" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Shop" >
     update shop_classify
     <set >
       <if test="className != null" >
@@ -94,7 +94,7 @@
     </set>
     where class_id = #{classId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.entity.Shop_classify" >
+  <update id="updateByPrimaryKey" parameterType="com.entity.Shop" >
     update shop_classify
     set class_name = #{className,jdbcType=VARCHAR},
       class_key = #{classKey,jdbcType=INTEGER},

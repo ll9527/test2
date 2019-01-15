@@ -1,6 +1,9 @@
 package com.entity;
 
-public class Shop_classify {
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@EntityScan
+public class Shop {
     private Integer classId;
 
     private String className;

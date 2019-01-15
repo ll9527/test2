@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.Product_itemMapper" >
-  <resultMap id="BaseResultMap" type="com.entity.Product_item" >
+<mapper namespace="com.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Product" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="sell_point" property="sellPoint" jdbcType="VARCHAR" />
@@ -17,11 +17,9 @@
   <sql id="Base_Column_List" >
     id, title, sell_point, price, group_price, num, image, cid, status, created, updated
   </sql>
-
   <select id="selectAll" resultMap="BaseResultMap">
     select * from product_item
   </select>
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -32,7 +30,7 @@
     delete from product_item
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.entity.Product_item" >
+  <insert id="insert" parameterType="com.entity.Product" >
     insert into product_item (id, title, sell_point, 
       price, group_price, num, 
       image, cid, status, 
@@ -42,7 +40,7 @@
       #{image,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.entity.Product_item" >
+  <insert id="insertSelective" parameterType="com.entity.Product" >
     insert into product_item
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -115,7 +113,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Product_item" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Product" >
     update product_item
     <set >
       <if test="title != null" >
@@ -151,7 +149,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.entity.Product_item" >
+  <update id="updateByPrimaryKey" parameterType="com.entity.Product" >
     update product_item
     set title = #{title,jdbcType=VARCHAR},
       sell_point = #{sellPoint,jdbcType=VARCHAR},

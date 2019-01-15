@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com")
+@ComponentScan({"com.serviceImp","com.controller"})
 @MapperScan("com.dao")
 public class TotalshopApplication {
 

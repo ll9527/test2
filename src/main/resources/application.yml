@@ -14,3 +14,8 @@ spring:
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   config-location: classpath:mybatis-config.xml
+logging:
+  level:
+    com:
+      dao:
+        debug

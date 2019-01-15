@@ -1,8 +1,11 @@
 package com.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.Date;
 
-public class Product_item {
+@EntityScan
+public class Product {
     private Integer id;
 
     private String title;
