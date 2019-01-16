@@ -10,6 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/*
+* author:@洪伟
+*
+*
+*
+* */
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -17,6 +25,7 @@ public class UserController {
     @Autowired(required = false)
     private UserService userService;
 
+    //用户登录
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public Map login(String username, String password) {
         Map<String, Object> map = new HashMap<>();
@@ -42,6 +51,7 @@ public class UserController {
         return map;
     }
 
+    //用户注册
     @RequestMapping(value = "/registered", method = RequestMethod.GET)
     public Map login(User user){
         int isOk = userService.insertSelective(user);
@@ -54,5 +64,12 @@ public class UserController {
             map.put("info", -1);//1代表注册失败
         }
         return map;
+    }
+
+    //关联地址表查询用户信息
+    @RequestMapping(value = "/selectWithAddress", method = RequestMethod.GET)
+    public User selectWithAddress(Integer userid){
+        User user = userService.selectAddressByUserId(userid);
+        return user;
     }
 }

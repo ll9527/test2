@@ -3,6 +3,7 @@ package com.entity;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @EntityScan
 public class User {
@@ -23,6 +24,16 @@ public class User {
     private BigDecimal money;
 
     private Integer isAdmin;
+
+    private List<Address> addressList;
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
 
     public Integer getId() {
         return id;

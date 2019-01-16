@@ -10,6 +10,12 @@
   <sql id="Base_Column_List" >
     id, address, user_id, user_name
   </sql>
+
+  <!--通过userid查询地址信息-->
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select * from address where user_id = #{userid}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

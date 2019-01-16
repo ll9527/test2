@@ -2,6 +2,8 @@ package com.service;
 
 import com.entity.Address;
 
+import java.util.List;
+
 public interface AddressService {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface AddressService {
     int updateByPrimaryKeySelective(Address record);
 
     int updateByPrimaryKey(Address record);
+
+    List<Address> selectByUserId(Integer userid);
 }
