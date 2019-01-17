@@ -18,23 +18,31 @@ public class UserController {
     private UserService userService;
 
     //用户登录
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public Map login(String username, String password) {
+    @RequestMapping(value = "/login")
+    public Map login(User user) {
         Map<String, Object> map = new HashMap<>();
-        User newUser = userService.login(username, password);
+        Map<String, Object> usermap = new HashMap<>();
+        usermap.put("username", user.getUsername());
+        usermap.put("password", user.getPassword());
+        usermap.put("tel", user.getTel());
+        User newUser = userService.login(usermap);
         if (newUser != null) {
             if (newUser.getIsAdmin() == 1) {
                 map.put("status", "ok");
                 map.put("info", 1);//1为管理员
+                map.put("userId", newUser.getId());
             } else if (newUser.getIsSeller() == 1) {
                 map.put("status", "ok");
                 map.put("info", 2);//2为商家
+                map.put("userId", newUser.getId());
             } else if (newUser.getIsVip() == 1) {
                 map.put("status", "ok");
                 map.put("info", 3);//3为vip
+                map.put("userId", newUser.getId());
             } else {
                 map.put("status", "yes");
                 map.put("info", 0);//0为普通用户
+                map.put("userId", newUser.getId());
             }
         }else{
             map.put("status", "no");//用户不存在
@@ -44,7 +52,7 @@ public class UserController {
     }
 
     //用户注册
-    @RequestMapping(value = "/registered", method = RequestMethod.POST)
+    @RequestMapping(value = "/registered")
     public Map registered(User user){
         /*System.out.println(username+"      "+tel);
           return null*/
@@ -61,7 +69,7 @@ public class UserController {
     }
 
     //关联地址表查询用户信息
-    @RequestMapping(value = "/selectWithAddress", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectWithAddress")
     public User selectWithAddress(Integer userid){
         User user = userService.selectAddressByUserId(userid);
         return user;

@@ -18,4 +18,6 @@ public interface SellerBcImgMapper {
     int updateByPrimaryKey(SellerBcImg record);
 
     List<SellerBcImg> selectAll();
+
+
 }

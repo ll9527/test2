@@ -23,6 +23,10 @@ spring:
     prefix: classpath:/view/
     encoding: UTF-8
     suffix: .html
+  servlet:
+    multipart:
+      max-request-size: 100000000
+      max-file-size: 100000000
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   config-location: classpath:mybatis-config.xml

@@ -36,13 +36,18 @@
   </sql>
 
   <!--登录验证-->
-  <select id="login" resultMap="BaseResultMap" parameterType="java.lang.String">
+  <select id="login" resultMap="BaseResultMap" parameterType="Map">
     SELECT
       *
     FROM
       USER
     WHERE
+    <if test="username!=null">
       USER.username = #{username}
+    </if>
+    <if test="tel!=null">
+      user.tel = #{tel}
+    </if>
       AND USER.PASSWORD = #{password}
   </select>
 

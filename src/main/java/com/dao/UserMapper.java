@@ -3,6 +3,7 @@ package com.dao;
 import com.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -17,7 +18,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    User login(String username, String password);
+    User login(Map<String, Object> map);
 
     //根据userid关联查询address
     User selectAddressByUserId(Integer userid);

@@ -10,6 +10,7 @@
     id, img, seller_id
   </sql>
 
+
   <!--查询所有-->
   <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select * from seller_bcimg

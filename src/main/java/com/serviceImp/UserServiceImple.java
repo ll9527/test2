@@ -6,7 +6,8 @@ import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.security.MessageDigest;
+import java.util.Map;
 
 @Service
 public class UserServiceImple implements UserService {
@@ -26,6 +27,8 @@ public class UserServiceImple implements UserService {
 
     @Override
     public int insertSelective(User record) {
+
+
         return userMapper.insertSelective(record);
     }
 
@@ -45,9 +48,10 @@ public class UserServiceImple implements UserService {
     }
 
     @Override
-    public User login(String username, String password) {
-        return userMapper.login(username, password);
+    public User login(Map<String, Object> map) {
+        return userMapper.login(map);
     }
+
 
     @Override
     public User selectAddressByUserId(Integer userid) {
